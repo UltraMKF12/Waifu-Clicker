@@ -2,6 +2,6 @@
 
 [node name="Game" type="Node"]
 
-[node name="Control" type="Control" parent="."]
+[node name="Control1" type="Control" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
