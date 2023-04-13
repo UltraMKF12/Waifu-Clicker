@@ -1,0 +1,24 @@
+[gd_scene format=2]
+
+[node name="Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_editor_description_": "It's a fucking masterpiece"
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_left = 160.0
+margin_top = 100.0
+margin_right = 860.0
+margin_bottom = 500.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 600, 400 )
+
+[node name="ToolButton" type="ToolButton" parent="Panel"]
+margin_left = 255.0
+margin_top = 302.0
+margin_right = 466.0
+margin_bottom = 324.0
+text = "Kilépés"
