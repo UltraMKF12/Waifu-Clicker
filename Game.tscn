@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Game.gd" type="Script" id=1]
 [ext_resource path="res://Moneytext.gd" type="Script" id=2]
+[ext_resource path="res://Affection.gd" type="Script" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.854902, 0.141176, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.854902, 0.611765, 0.611765, 1 )
+border_color = Color( 0.207843, 0, 0.129412, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+use_filter = true
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
@@ -19,7 +31,7 @@ anchor_bottom = 1.0
 custom_constants/separation = 0
 
 [node name="CharacterPart" type="Control" parent="Screen/HBoxContainer"]
-margin_right = 860.0
+margin_right = 853.0
 margin_bottom = 720.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -27,7 +39,10 @@ size_flags_stretch_ratio = 2.0
 [node name="ColorRect" type="ColorRect" parent="Screen/HBoxContainer/CharacterPart"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.215686, 0.215686, 0.215686, 1 )
+color = Color( 0.309804, 0.223529, 0.223529, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Keytext" type="Label" parent="Screen/HBoxContainer/CharacterPart"]
 margin_right = 97.0
@@ -50,6 +65,43 @@ align = 1
 valign = 1
 script = ExtResource( 2 )
 
+[node name="AffectionBar" type="ProgressBar" parent="Screen/HBoxContainer/CharacterPart"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 21.0
+margin_top = -15.0
+margin_right = 266.0
+margin_bottom = 4.0
+rect_rotation = -89.9999
+custom_styles/fg = SubResource( 1 )
+custom_styles/bg = SubResource( 2 )
+value = 50.0
+percent_visible = false
+script = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="Screen/HBoxContainer/CharacterPart/AffectionBar"]
+anchor_left = 0.143
+anchor_top = 0.712
+anchor_right = 0.143
+anchor_bottom = 0.712
+margin_left = 163.965
+margin_top = 33.4715
+margin_right = 265.965
+margin_bottom = 55.4715
+rect_rotation = 89.9999
+text = "Random value"
+
+[node name="AffectionText" type="Label" parent="Screen/HBoxContainer/CharacterPart/AffectionBar"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 58.0001
+margin_top = 7.99988
+margin_right = 128.0
+margin_bottom = 62.9999
+rect_rotation = 89.9999
+custom_fonts/font = SubResource( 3 )
+text = "50%"
+
 [node name="ShopPart" type="Control" parent="Screen/HBoxContainer"]
 margin_left = 853.0
 margin_right = 1280.0
@@ -59,4 +111,9 @@ size_flags_horizontal = 3
 [node name="ColorRect" type="ColorRect" parent="Screen/HBoxContainer/ShopPart"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.443137, 0.443137, 0.443137, 1 )
+color = Color( 0.243137, 0.317647, 0.329412, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="Screen/HBoxContainer/CharacterPart/AffectionBar/Button" to="Screen/HBoxContainer/CharacterPart/AffectionBar" method="_on_Button_pressed"]
