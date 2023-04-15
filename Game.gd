@@ -1,7 +1,7 @@
 extends Node
 
 
-var money: int = 100
+var money: int = 92000
 var keys: int = 2
 
 onready var moneytext = $Screen/HBoxContainer/CharacterPart/Moneytext

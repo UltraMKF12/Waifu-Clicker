@@ -16,9 +16,9 @@ func _process(d):
 	var tmp=int(self.text)
 	var glonch=-1
 	for e in exponent:
-		if pow(10,e)<tmp:
+		if pow(10,e)<=tmp:
 			glonch=exponent.find(e)
 	if glonch==-1:
 		self.text= str(tmp)+" "+mert_egys
 	else:
-		self.text=str(tmp) + " " +vegek[glonch]+" " +mert_egys
+		self.text=str(stepify(tmp/pow(10,exponent[glonch]),0.01)) + " " +vegek[glonch]+" " +mert_egys
