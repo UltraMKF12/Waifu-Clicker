@@ -10,3 +10,6 @@ onready var keytext = $Screen/HBoxContainer/CharacterPart/Keytext
 func _ready():
 	moneytext.text = str(money)
 	keytext.text = str(keys)
+
+func _process(delta):
+	moneytext.text=str(money)
