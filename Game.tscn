@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://Game.gd" type="Script" id=1]
-[ext_resource path="res://Moneytext.gd" type="Script" id=2]
-[ext_resource path="res://Affection.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Affection.gd" type="Script" id=3]
 [ext_resource path="res://Fonts/Spring Snowstorm.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -19,6 +18,7 @@ font_data = ExtResource( 4 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
+money = 6754
 
 [node name="Screen" type="Control" parent="."]
 anchor_right = 1.0
@@ -56,17 +56,15 @@ position = Vector2( 298, -204 )
 offset = Vector2( 2, 0 )
 polygon = PoolVector2Array( 40, 225, 65, 210, 230, 210, 255, 225, 230, 240, 65, 240 )
 
-[node name="Moneytext" type="Label" parent="Screen/HBoxContainer/CharacterPart"]
-margin_left = 396.0
-margin_top = 15.0
-margin_right = 493.0
-margin_bottom = 29.0
+[node name="Moneytext" type="Label" parent="Screen/HBoxContainer/CharacterPart/MoneyTextBorder"]
+margin_left = 98.0
+margin_top = 219.0
+margin_right = 195.0
+margin_bottom = 233.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Money Counter"
 align = 1
 valign = 1
-script = ExtResource( 2 )
-value = 5423
 
 [node name="AffectionBar" type="ProgressBar" parent="Screen/HBoxContainer/CharacterPart"]
 anchor_top = 1.0
