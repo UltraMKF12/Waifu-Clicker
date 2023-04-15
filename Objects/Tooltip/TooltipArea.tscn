@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Objects/Tooltip/TooltipArea.gd" type="Script" id=1]
+
+[node name="TooltipArea" type="ColorRect"]
+margin_right = 32.0
+margin_bottom = 32.0
+mouse_filter = 1
+color = Color( 0.388235, 0, 0.345098, 0.196078 )
+script = ExtResource( 1 )
+tooltip_text = "Type your tooltip text here"
+
+[connection signal="mouse_entered" from="." to="." method="_on_TooltipArea_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_TooltipArea_mouse_exited"]

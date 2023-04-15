@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Objects/Tooltip/TooltipArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Affection.gd" type="Script" id=3]
 [ext_resource path="res://Fonts/Spring Snowstorm.ttf" type="DynamicFontData" id=4]
 
@@ -23,40 +24,44 @@ money = 6754
 [node name="Screen" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Screen"]
+[node name="TwoPartDivision" type="HBoxContainer" parent="Screen"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 custom_constants/separation = 0
 
-[node name="CharacterPart" type="Control" parent="Screen/HBoxContainer"]
+[node name="CharacterPart" type="Control" parent="Screen/TwoPartDivision"]
 margin_right = 853.0
 margin_bottom = 720.0
+mouse_filter = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
 
-[node name="ColorRect" type="ColorRect" parent="Screen/HBoxContainer/CharacterPart"]
+[node name="ColorRect" type="ColorRect" parent="Screen/TwoPartDivision/CharacterPart"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.309804, 0.223529, 0.223529, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Keytext" type="Label" parent="Screen/HBoxContainer/CharacterPart"]
+[node name="Keytext" type="Label" parent="Screen/TwoPartDivision/CharacterPart"]
 margin_right = 97.0
 margin_bottom = 14.0
 text = "Key Counter"
 
-[node name="MoneyTextBorder" type="Polygon2D" parent="Screen/HBoxContainer/CharacterPart"]
+[node name="MoneyTextBorder" type="Polygon2D" parent="Screen/TwoPartDivision/CharacterPart"]
 position = Vector2( 298, -204 )
 offset = Vector2( 2, 0 )
 polygon = PoolVector2Array( 40, 225, 65, 210, 230, 210, 255, 225, 230, 240, 65, 240 )
 
-[node name="Moneytext" type="Label" parent="Screen/HBoxContainer/CharacterPart/MoneyTextBorder"]
+[node name="Moneytext" type="Label" parent="Screen/TwoPartDivision/CharacterPart/MoneyTextBorder"]
 margin_left = 98.0
 margin_top = 219.0
 margin_right = 195.0
@@ -66,7 +71,7 @@ text = "Money Counter"
 align = 1
 valign = 1
 
-[node name="AffectionBar" type="ProgressBar" parent="Screen/HBoxContainer/CharacterPart"]
+[node name="AffectionBar" type="ProgressBar" parent="Screen/TwoPartDivision/CharacterPart"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 21.0
@@ -74,13 +79,14 @@ margin_top = -15.0
 margin_right = 266.0
 margin_bottom = 4.0
 rect_rotation = -89.9999
+mouse_filter = 2
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 value = 50.0
 percent_visible = false
 script = ExtResource( 3 )
 
-[node name="Button" type="Button" parent="Screen/HBoxContainer/CharacterPart/AffectionBar"]
+[node name="Button" type="Button" parent="Screen/TwoPartDivision/CharacterPart/AffectionBar"]
 anchor_left = 0.143
 anchor_top = 0.712
 anchor_right = 0.143
@@ -92,7 +98,7 @@ margin_bottom = 55.4715
 rect_rotation = 89.9999
 text = "Random value"
 
-[node name="AffectionText" type="Label" parent="Screen/HBoxContainer/CharacterPart/AffectionBar"]
+[node name="AffectionText" type="Label" parent="Screen/TwoPartDivision/CharacterPart/AffectionBar"]
 anchor_top = 1.0
 anchor_bottom = 1.0
 margin_left = 58.0001
@@ -103,18 +109,48 @@ rect_rotation = 89.9999
 custom_fonts/font = SubResource( 3 )
 text = "50%"
 
-[node name="ShopPart" type="Control" parent="Screen/HBoxContainer"]
+[node name="ShopPart" type="Control" parent="Screen/TwoPartDivision"]
 margin_left = 853.0
 margin_right = 1280.0
 margin_bottom = 720.0
+mouse_filter = 2
 size_flags_horizontal = 3
 
-[node name="ColorRect" type="ColorRect" parent="Screen/HBoxContainer/ShopPart"]
+[node name="ColorRect" type="ColorRect" parent="Screen/TwoPartDivision/ShopPart"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 color = Color( 0.243137, 0.317647, 0.329412, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="pressed" from="Screen/HBoxContainer/CharacterPart/AffectionBar/Button" to="Screen/HBoxContainer/CharacterPart/AffectionBar" method="_on_Button_pressed"]
+[node name="Tooltips" type="Control" parent="Screen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="AffectionTooltip" parent="Screen/Tooltips" instance=ExtResource( 2 )]
+margin_left = 21.0
+margin_top = 459.0
+margin_right = 40.0
+margin_bottom = 706.0
+tooltip_text = "This is the characters affection meter. Fill it up to get special events!"
+
+[node name="MoneyTooltip" parent="Screen/Tooltips" instance=ExtResource( 2 )]
+margin_left = 342.0
+margin_top = 5.0
+margin_right = 555.0
+margin_bottom = 37.0
+tooltip_text = "This is your current money. Use it to buy new characters, or upgrade existing ones"
+
+[node name="TooltipArea" parent="Screen/Tooltips" instance=ExtResource( 2 )]
+margin_left = 857.0
+margin_top = 2.0
+margin_right = 1278.0
+margin_bottom = 715.0
+tooltip_text = "This are is under construction and I advise you do not do anything funny here. That's why this looooong long long looong tooltip is here for. Please go away to the red side!
+
+This are is under construction and I advise you do not do anything funny here. That's why this looooong long long looong tooltip is here for. Please go away to the red side!"
+
+[connection signal="pressed" from="Screen/TwoPartDivision/CharacterPart/AffectionBar/Button" to="Screen/TwoPartDivision/CharacterPart/AffectionBar" method="_on_Button_pressed"]
