@@ -4,7 +4,7 @@ extends Node
 export var money: int = 92000
 var keys: int = 2
 
-onready var moneytext = $Screen/TwoPartDivision/CharacterPart/MoneyTextBorder/MoneyText
+onready var moneytext = $Screen/TwoPartDivision/CharacterPart/Money/MoneyText
 onready var keytext = $Screen/TwoPartDivision/CharacterPart/Keys/KeyText
 
 func _ready():

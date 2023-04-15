@@ -12,7 +12,7 @@ func price_translate(number: int):
 	var exponent=[3,6,9,12,15]
 	var vegek=["K","M","B","T","Q"]
 	#var vegek_hosszu=["Thousand","Million","Trillion","Quadrillion"]
-	var mert_egys="Dollarium"
+	var mert_egys=""
 	
 	var tmp=number
 	var glonch=-1

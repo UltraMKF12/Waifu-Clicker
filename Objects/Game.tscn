@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scripts/Affection.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Fonts/coolvetica condensed rg.otf" type="DynamicFontData" id=4]
 [ext_resource path="res://Objects/Tooltip/TooltipArea.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Sprites/Icons/icon_key.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Icons/icon_money.png" type="Texture" id=7]
 
 [sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.113725, 0.113725, 0.113725, 0.619608 )
@@ -21,9 +22,15 @@ shadow_size = 3
 size = 36
 font_data = ExtResource( 4 )
 
-[sub_resource type="DynamicFont" id=4]
-size = 22
-font_data = ExtResource( 4 )
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.113725, 0.113725, 0.113725, 0.619608 )
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color( 0, 0.862745, 0.356863, 0.6 )
+shadow_size = 3
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.854902, 0.141176, 0, 1 )
@@ -39,7 +46,7 @@ font_data = ExtResource( 3 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 2 )
-money = 6754
+money = 324234
 
 [node name="Screen" type="Control" parent="."]
 anchor_right = 1.0
@@ -96,7 +103,7 @@ text = "12"
 align = 1
 valign = 1
 
-[node name="TextureRect" type="TextureRect" parent="Screen/TwoPartDivision/CharacterPart/Keys"]
+[node name="KeyIcon" type="TextureRect" parent="Screen/TwoPartDivision/CharacterPart/Keys"]
 anchor_left = 0.259
 anchor_top = 0.464
 anchor_right = 0.259
@@ -109,21 +116,43 @@ rect_rotation = -159.95
 texture = ExtResource( 6 )
 expand = true
 
-[node name="MoneyTextBorder" type="Polygon2D" parent="Screen/TwoPartDivision/CharacterPart"]
-position = Vector2( 298, -204 )
-offset = Vector2( 2, 0 )
-polygon = PoolVector2Array( 40, 225, 65, 210, 230, 210, 255, 225, 230, 240, 65, 240 )
+[node name="Money" type="Panel" parent="Screen/TwoPartDivision/CharacterPart"]
+margin_left = 353.0
+margin_top = 16.0
+margin_right = 537.0
+margin_bottom = 65.0
+custom_styles/panel = SubResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="MoneyText" type="Label" parent="Screen/TwoPartDivision/CharacterPart/MoneyTextBorder"]
-margin_left = 68.0
-margin_top = 210.0
-margin_right = 231.0
-margin_bottom = 239.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Money Counter"
+[node name="MoneyText" type="Label" parent="Screen/TwoPartDivision/CharacterPart/Money"]
+anchor_left = 0.778
+anchor_top = 0.441
+anchor_right = 0.778
+anchor_bottom = 0.441
+margin_left = -59.152
+margin_top = -21.609
+margin_right = 32.848
+margin_bottom = 22.391
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "123.46K"
 align = 1
 valign = 1
+
+[node name="MoneyIcon" type="TextureRect" parent="Screen/TwoPartDivision/CharacterPart/Money"]
+anchor_left = 0.259
+anchor_top = 0.464
+anchor_right = 0.259
+anchor_bottom = 0.464
+margin_left = -39.656
+margin_top = -69.736
+margin_right = 78.344
+margin_bottom = 48.264
+rect_rotation = 17.8182
+texture = ExtResource( 7 )
+expand = true
 
 [node name="AffectionBar" type="ProgressBar" parent="Screen/TwoPartDivision/CharacterPart"]
 anchor_top = 1.0
@@ -193,13 +222,14 @@ margin_left = 21.0
 margin_top = 459.0
 margin_right = 40.0
 margin_bottom = 706.0
-tooltip_text = "This is the characters affection meter. Fill it up to get special events!"
+tooltip_text = "This is the characters affection meter. 
+Fill it up to get special events!"
 
 [node name="MoneyTooltip" parent="Screen/Tooltips" instance=ExtResource( 5 )]
-margin_left = 342.0
-margin_top = 5.0
-margin_right = 555.0
-margin_bottom = 37.0
+margin_left = 350.0
+margin_top = 13.0
+margin_right = 539.0
+margin_bottom = 67.0
 tooltip_text = "This is your current money.
 Use it to buy new characters, or upgrade existing ones"
 
