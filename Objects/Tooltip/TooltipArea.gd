@@ -19,12 +19,11 @@ func _ready():
 func _process(_delta):
 	tooltip_obj.rect_position = get_global_mouse_position()
 	
-	#Because 2D stretch mode, the game always runs on (1280 x 720). Even if the window is resized.
+	#Because of 2D stretch mode, the game always runs on (1280 x 720). Even if the window is resized.
 	var screen_size = Vector2(ProjectSettings.get("display/window/size/width"), ProjectSettings.get("display/window/size/height"))
 	var max_tooltip_size = screen_size - tooltip_obj.rect_size
 	var mouse_position = get_global_mouse_position()
-	
-	#Tooltip need to be at the middle of the mouse vertically
+
 	
 	tooltip_obj.rect_position.x = clamp(mouse_position.x, 0, max_tooltip_size.x)
 	tooltip_obj.rect_position.y = clamp(mouse_position.y, 0, max_tooltip_size.y)
@@ -32,7 +31,7 @@ func _process(_delta):
 
 func _on_TooltipArea_mouse_entered():
 	tooltip_obj = tooltip_reference.instance()
-	get_parent().add_child(tooltip_obj) #Need to add to the parent because self.module affects the visibility of the tooltip
+	get_parent().add_child(tooltip_obj) #Need to add to the parent because self.modulate.a affects the visibility of the tooltip
 	tooltip_obj.set_tooltip(tooltip_text)
 	set_process(true)
 
