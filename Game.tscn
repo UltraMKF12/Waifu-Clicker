@@ -53,3 +53,5 @@ size_flags_horizontal = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.443137, 0.443137, 0.443137, 1 )
+
+[node name="push-test-node" type="Node2D" parent="Screen/HBoxContainer/ShopPart/ColorRect"]
