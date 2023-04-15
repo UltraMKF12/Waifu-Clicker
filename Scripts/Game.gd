@@ -4,8 +4,8 @@ extends Node
 export var money: int = 92000
 var keys: int = 2
 
-onready var moneytext = $Screen/TwoPartDivision/CharacterPart/MoneyTextBorder/Moneytext
-onready var keytext = $Screen/TwoPartDivision/CharacterPart/Keytext
+onready var moneytext = $Screen/TwoPartDivision/CharacterPart/MoneyTextBorder/MoneyText
+onready var keytext = $Screen/TwoPartDivision/CharacterPart/Keys/KeyText
 
 func _ready():
 	moneytext.text = Gamemanager.price_translate(money)

@@ -1,10 +1,25 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Objects/Tooltip/TooltipArea.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scripts/Affection.gd" type="Script" id=3]
 [ext_resource path="res://Fonts/Spring Snowstorm.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://Fonts/coolvetica condensed rg.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://Sprites/Icons/icon_key.png" type="Texture" id=6]
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.113725, 0.113725, 0.113725, 0.619608 )
+border_blend = true
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+shadow_color = Color( 1, 0.913725, 0.356863, 0.6 )
+shadow_size = 3
+
+[sub_resource type="DynamicFont" id=5]
+size = 36
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
 size = 22
@@ -51,22 +66,55 @@ size_flags_stretch_ratio = 2.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0.309804, 0.223529, 0.223529, 1 )
+color = Color( 0.643137, 0.501961, 0.501961, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Keytext" type="Label" parent="Screen/TwoPartDivision/CharacterPart"]
-margin_right = 97.0
-margin_bottom = 14.0
-text = "Key Counter"
+[node name="Keys" type="Panel" parent="Screen/TwoPartDivision/CharacterPart"]
+margin_left = 10.0
+margin_top = 18.0
+margin_right = 98.0
+margin_bottom = 52.0
+custom_styles/panel = SubResource( 6 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="KeyText" type="Label" parent="Screen/TwoPartDivision/CharacterPart/Keys"]
+anchor_left = 0.778
+anchor_top = 0.441
+anchor_right = 0.778
+anchor_bottom = 0.441
+margin_left = -14.464
+margin_top = -21.994
+margin_right = 14.536
+margin_bottom = 22.006
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "12"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Screen/TwoPartDivision/CharacterPart/Keys"]
+anchor_left = 0.259
+anchor_top = 0.464
+anchor_right = 0.259
+anchor_bottom = 0.464
+margin_left = 20.208
+margin_top = 45.224
+margin_right = 89.208
+margin_bottom = 114.224
+rect_rotation = -159.95
+texture = ExtResource( 6 )
+expand = true
 
 [node name="MoneyTextBorder" type="Polygon2D" parent="Screen/TwoPartDivision/CharacterPart"]
 position = Vector2( 298, -204 )
 offset = Vector2( 2, 0 )
 polygon = PoolVector2Array( 40, 225, 65, 210, 230, 210, 255, 225, 230, 240, 65, 240 )
 
-[node name="Moneytext" type="Label" parent="Screen/TwoPartDivision/CharacterPart/MoneyTextBorder"]
+[node name="MoneyText" type="Label" parent="Screen/TwoPartDivision/CharacterPart/MoneyTextBorder"]
 margin_left = 68.0
 margin_top = 210.0
 margin_right = 231.0
@@ -126,7 +174,7 @@ size_flags_horizontal = 3
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0.243137, 0.317647, 0.329412, 1 )
+color = Color( 0.537255, 0.611765, 0.623529, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -152,15 +200,15 @@ margin_left = 342.0
 margin_top = 5.0
 margin_right = 555.0
 margin_bottom = 37.0
-tooltip_text = "This is your current money. Use it to buy new characters, or upgrade existing ones"
+tooltip_text = "This is your current money.
+Use it to buy new characters, or upgrade existing ones"
 
-[node name="TooltipArea" parent="Screen/Tooltips" instance=ExtResource( 2 )]
-margin_left = 857.0
-margin_top = 2.0
-margin_right = 1278.0
-margin_bottom = 715.0
-tooltip_text = "This are is under construction and I advise you do not do anything funny here. That's why this looooong long long looong tooltip is here for. Please go away to the red side!
-
-This are is under construction and I advise you do not do anything funny here. That's why this looooong long long looong tooltip is here for. Please go away to the red side!"
+[node name="KeyTooltip" parent="Screen/Tooltips" instance=ExtResource( 2 )]
+margin_left = 10.0
+margin_top = 18.0
+margin_right = 99.0
+margin_bottom = 53.0
+tooltip_text = "This is you currently avalible keys.
+Use it to unlock other characters."
 
 [connection signal="pressed" from="Screen/TwoPartDivision/CharacterPart/AffectionBar/Button" to="Screen/TwoPartDivision/CharacterPart/AffectionBar" method="_on_Button_pressed"]
