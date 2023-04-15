@@ -8,8 +8,8 @@ onready var moneytext = $Screen/HBoxContainer/CharacterPart/Moneytext
 onready var keytext = $Screen/HBoxContainer/CharacterPart/Keytext
 
 func _ready():
-	moneytext.text = str(money)
+	moneytext.value = money
 	keytext.text = str(keys)
 
 func _process(delta):
-	moneytext.text=str(money)
+	moneytext.value=money
