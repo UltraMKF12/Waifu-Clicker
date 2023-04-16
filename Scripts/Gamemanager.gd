@@ -1,5 +1,7 @@
 extends Node
 
+var money: int = 0
+var keys: int = 0
 
 func _process(_delta):
 	if Input.is_action_just_pressed("Exit"):
