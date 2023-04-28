@@ -1,8 +1,11 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Objects/Menu.gd" type="Script" id=1]
 
 [node name="Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": "It's a fucking masterpiece"
 }
@@ -17,8 +20,19 @@ grow_vertical = 2
 rect_min_size = Vector2( 600, 400 )
 
 [node name="ToolButton" type="ToolButton" parent="Panel"]
+margin_left = 319.0
+margin_top = 261.0
+margin_right = 401.0
+margin_bottom = 283.0
+text = "Beállítások"
+
+[node name="kilepesGomb" type="ToolButton" parent="Panel"]
 margin_left = 255.0
 margin_top = 302.0
 margin_right = 466.0
 margin_bottom = 324.0
+action_mode = 0
 text = "Kilépés"
+
+[connection signal="pressed" from="Panel/ToolButton" to="." method="_on_ToolButton_pressed"]
+[connection signal="pressed" from="Panel/kilepesGomb" to="." method="_on_kilepesGomb_pressed"]
