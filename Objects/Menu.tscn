@@ -34,5 +34,13 @@ margin_bottom = 324.0
 action_mode = 0
 text = "Kilépés"
 
+[node name="mentes" type="ToolButton" parent="Panel"]
+margin_left = 330.0
+margin_top = 221.0
+margin_right = 390.0
+margin_bottom = 243.0
+text = "Mentés"
+
 [connection signal="pressed" from="Panel/ToolButton" to="." method="_on_ToolButton_pressed"]
 [connection signal="pressed" from="Panel/kilepesGomb" to="." method="_on_kilepesGomb_pressed"]
+[connection signal="pressed" from="Panel/mentes" to="." method="_on_mentes_pressed"]

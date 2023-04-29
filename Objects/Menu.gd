@@ -19,3 +19,7 @@ func _on_kilepesGomb_pressed():
 
 func _on_ToolButton_pressed():
 	print("options")
+
+
+func _on_mentes_pressed():
+	print("progress saved!")
