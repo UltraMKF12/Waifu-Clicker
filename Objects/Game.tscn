@@ -228,4 +228,4 @@ tooltip_text = "This is you currently avalible keys.
 Use it to unlock other characters."
 
 [node name="Character" parent="." instance=ExtResource( 1 )]
-position = Vector2( 404, 477 )
+position = Vector2( 404, 476 )
